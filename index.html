@@ -7,16 +7,20 @@
 <script>
     
 
-    const text = "If art@gmail.com you agree with that, just let me know to obama@mail.us or newpower@gmail.com and I'll reach out as soon as possible.";
+    const text = "If you agree with that, just let me know to obama@mail.us or newpower@gmail.com and I'll reach out as soon as possible.";
 
     console.log(text);
-    // console.log(antiSpy(text));
+    console.log(antiSpy(text, "XXXXX"));
 
-    // function antiSpy (text) {
+    function antiSpy (text, hideMail) {
         let k = 0;
         let pos;
         let textAntiSpy = "";
-        let hideMail = "HIDDEN_DATA";
+        
+
+        if (hideMail == null) {
+            hideMail = "HIDDEN_DATA";
+        } 
 
 
         while (pos != -1) {
@@ -24,15 +28,8 @@
             pos = text.indexOf("@", k);     
             posMailStart = text.lastIndexOf(" ", pos) + 1;
             posMailEnd = text.indexOf(" ", posMailStart);
-            console.log(posMailStart, pos, posMailEnd);
-            console.log(text.slice(posMailStart, posMailEnd));
-
-
-            // if (text.indexOf("@", k) != -1) {
-            //     hideMail = "HIDDEN_DATA";
-            // } else {
-            //     hideMail = "";
-            // }
+            // console.log(posMailStart, pos, posMailEnd);
+            // console.log(text.slice(posMailStart, posMailEnd));
 
             textAntiSpy = textAntiSpy 
             + text.slice(k, posMailStart) 
@@ -44,12 +41,11 @@
             // console.log(textAntiSpy);        
         }
 
-        textAntiSpy = textAntiSpy + text.slice(posMailEnd, text.length);
+        textAntiSpy = textAntiSpy 
+        + text.slice(posMailEnd, text.length);
 
-        console.log(textAntiSpy);
-
-    
-    // }
+        return textAntiSpy;
+    }
 
 </script>
 
