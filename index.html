@@ -11,17 +11,16 @@
 
     console.log(text);
     console.log(antiSpy(text, "XXXXX"));
+    console.log(antiSpy2(text, "XXXXX"));
 
     function antiSpy (text, hideMail) {
         let k = 0;
         let pos;
         let textAntiSpy = "";
         
-
         if (hideMail == null) {
             hideMail = "HIDDEN_DATA";
         } 
-
 
         while (pos != -1) {
 
@@ -45,6 +44,14 @@
         + text.slice(posMailEnd, text.length);
 
         return textAntiSpy;
+    }
+
+    function antiSpy2 (text, hideMail) {
+        if (hideMail == null) {
+            hideMail = "HIDDEN_DATA";
+        } 
+        return text.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi, hideMail);
+       
     }
 
 </script>
