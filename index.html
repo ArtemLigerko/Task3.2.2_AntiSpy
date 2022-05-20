@@ -12,6 +12,8 @@
     console.log(text);
     console.log(antiSpy(text, "XXXXX"));
     console.log(antiSpy2(text, "XXXXX"));
+    console.log(antiSpy3(text, "XXXXX"));
+    console.log(antiSpy4(text, "XXXXX"));
 
     function antiSpy (text, hideMail) {
         let k = 0;
@@ -54,8 +56,33 @@
        
     }
 
-</script>
+    function antiSpy3 (text, hideMail) {
+        if (hideMail == null) {
+            hideMail = "HIDDEN_DATA";
+        } 
+        return text.replace(/([\u0041-\u007a]+@[\u0041-\u007a]+\.[\u0041-\u007a]+)/gi, hideMail);
+       
+    }
+    //console.log( "\u0041, \u007a");
 
+    function antiSpy4 (text, hideMail) {
+        let textArr = text.split(' ');
+        
+        if (hideMail == null) {
+            hideMail = "HIDDEN_DATA";
+        } 
+        
+        textArrHide = textArr.map(function(word) {
+            
+            if (word.indexOf("@") >= 0) {word = hideMail}
+            return word;
+        });
+
+        text = textArrHide.join(' ');
+        return text;
+    }
+
+</script>
 
 
 </body>
